@@ -10,13 +10,12 @@ $facebook = new Facebook(array(
 ));
 
 $user_profile = null;
-
+$user_friends = null;
 $user = $facebook->getUser();
 $loginUrl = $facebook->getLoginUrl(
 array(
-    'req_perms' => 'email,publish_stream,user_birthday,read_stream'
+    'scope' => 'publish_stream,user_birthday,read_stream'
     ));
-
 
 //echo $uid . " uid check!";
 
@@ -28,15 +27,15 @@ if($user)
     $user_profile=$facebook->api('/me');
     echo "Welcome ".$user_profile['name'] .":";
         echo " Total friends ".sizeof($user_friends['data'])."<br />";
-	//echo "Your Profile Summary.<br />" ;
+	//echo "Your Profile Summary-ARRAY LIST.<br />" ;
 
 
-	//echo "<pre>"; print_r($m); echo "</pre>";
+	//echo "<pre>"; print_r($user_profile); echo "</pre>";
 
-	//echo "<br>Your Friends Summary<br />";
+	//echo "<br>Your Friends Summary-ARRAY LIST<br />";
 
 
-	//echo "<pre>"; print_r($me); echo "</pre>";
+	//echo "<pre>"; print_r($user_friends); echo "</pre>";
 
 
         echo "<br /> <b>Friends Montage</b> <br /><br />";
